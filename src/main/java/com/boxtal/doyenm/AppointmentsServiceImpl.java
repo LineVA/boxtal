@@ -1,7 +1,6 @@
 package com.boxtal.doyenm;
 
-import com.boxtal.doyenm.doctolib.DoctolibConnector;
-import com.boxtal.doyenm.doctolib.dto.Structure;
+import com.boxtal.doyenm.doctolib.DoctolibService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -11,13 +10,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AppointmentsServiceImpl implements AppointmentsService {
 
-    private final DoctolibConnector doctolibConnector;
+    private final DoctolibService doctolibService;
 
     public List<Appointment> getAppointmentsByZipCode(String zipCode) {
-        List<Structure> structures = doctolibConnector.getStructures(zipCode);
-        structures.forEach(struc ->
-                doctolibConnector.getAppointmentsByStructure(struc)
-        );
+        List<Appointment> appointments = doctolibService.getAppointmentsByZipCode(zipCode);
+        // Add appointments from other services (like Keldoc) to the list
+// TODO Tri
+
         return null;
     }
 }

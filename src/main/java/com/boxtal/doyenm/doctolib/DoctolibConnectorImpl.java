@@ -57,6 +57,7 @@ public class DoctolibConnectorImpl implements DoctolibConnector {
 
             AppointmentDto response = client.execute(request, httpResponse ->
                     mapper.readValue(httpResponse.getEntity().getContent(), AppointmentDto.class));
+            response.setStructure(structure);
             return response;
 
         } catch (IOException ex) {
