@@ -2,12 +2,14 @@ package com.boxtal.doyenm.doctolib.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
  * A date + schedule of an appointment
  */
 @Data
+@AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SlotDto {
     /**

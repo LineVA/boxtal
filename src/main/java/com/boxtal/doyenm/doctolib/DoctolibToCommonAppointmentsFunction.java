@@ -11,6 +11,9 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+/**
+ * Function to convert an {{{@link AppointmentDto}}} to a list of {{{@link Appointment}}}
+ */
 @Component
 public class DoctolibToCommonAppointmentsFunction implements Function<AppointmentDto, List<Appointment>> {
     @Override
