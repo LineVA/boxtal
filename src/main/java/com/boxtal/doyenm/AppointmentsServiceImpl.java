@@ -4,6 +4,7 @@ import com.boxtal.doyenm.doctolib.DoctolibService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Component
@@ -15,9 +16,8 @@ public class AppointmentsServiceImpl implements AppointmentsService {
     public List<Appointment> getAppointmentsByZipCode(String zipCode) {
         List<Appointment> appointments = doctolibService.getAppointmentsByZipCode(zipCode);
         // Add appointments from other services (like Keldoc) to the list
-// TODO Tri
-
-        return null;
+        appointments.sort(Comparator.comparing(Appointment::getSchedule));
+        return appointments;
     }
 }
 
