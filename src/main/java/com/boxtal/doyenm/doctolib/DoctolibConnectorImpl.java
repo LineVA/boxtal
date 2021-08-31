@@ -1,7 +1,7 @@
 package com.boxtal.doyenm.doctolib;
 
 import com.boxtal.doyenm.doctolib.dto.AppointmentDto;
-import com.boxtal.doyenm.doctolib.dto.Structure;
+import com.boxtal.doyenm.doctolib.dto.StructureDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.client.methods.HttpGet;
@@ -25,8 +25,8 @@ public class DoctolibConnectorImpl implements DoctolibConnector {
 
 
     @Override
-    public List<Structure> getStructures(String zipCode) {
-        List<Structure> structures = new ArrayList<>();
+    public List<StructureDto> getStructures(String zipCode) {
+        List<StructureDto> structures = new ArrayList<>();
         try {
             Document doc = Jsoup.connect("https://www.doctolib.fr/vaccination-covid-19/"
                     + zipCode
@@ -34,7 +34,7 @@ public class DoctolibConnectorImpl implements DoctolibConnector {
                     .get();
             Elements htmlStructures = doc.getElementsByAttributeValueStarting("id", "search-result-");
             for (Element struc : htmlStructures) {
-                structures.add(Structure.builder()
+                structures.add(StructureDto.builder()
                         .id(struc.id().substring(14))
                         .name(struc.select("div div div h3 a div").text())
                         .build()
@@ -47,7 +47,7 @@ public class DoctolibConnectorImpl implements DoctolibConnector {
     }
 
     @Override
-    public AppointmentDto getAppointmentsByStructure(Structure structure) {
+    public AppointmentDto getAppointmentsByStructure(StructureDto structure) {
 
         try (CloseableHttpClient client = HttpClients.createDefault()) {
 

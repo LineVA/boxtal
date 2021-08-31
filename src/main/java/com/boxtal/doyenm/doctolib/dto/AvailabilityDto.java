@@ -1,12 +1,19 @@
 package com.boxtal.doyenm.doctolib.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
+import java.util.List;
+
+/**
+ * All the availabilities of a given structure
+ */
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Slot {
-    @JsonProperty("start_date")
-    String startDate;
+public class AvailabilityDto {
+    /**
+     * List of slots
+     */
+    List<SlotDto> slots;
+
 }

@@ -1,7 +1,7 @@
 package com.boxtal.doyenm.doctolib;
 
 import com.boxtal.doyenm.Appointment;
-import com.boxtal.doyenm.doctolib.dto.Structure;
+import com.boxtal.doyenm.doctolib.dto.StructureDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -19,7 +19,7 @@ public class DoctolibServiceImpl implements DoctolibService {
 
     @Override
     public List<Appointment> getAppointmentsByZipCode(String zipCode) {
-        List<Structure> structures = doctolibConnector.getStructures(zipCode);
+        List<StructureDto> structures = doctolibConnector.getStructures(zipCode);
         List<Appointment> appointments = new ArrayList<>();
         structures
                 .stream()

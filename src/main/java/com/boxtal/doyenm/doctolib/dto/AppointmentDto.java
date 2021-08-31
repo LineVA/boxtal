@@ -5,10 +5,18 @@ import lombok.Data;
 
 import java.util.List;
 
-
+/**
+ * All the appointments of a given structure
+ */
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AppointmentDto {
-    private List<Availability> availabilities;
-    private Structure structure;
+    /**
+     * List of availabilities
+     */
+    private List<AvailabilityDto> availabilities;
+    /**
+     * The structure
+     */
+    private StructureDto structure;
 }

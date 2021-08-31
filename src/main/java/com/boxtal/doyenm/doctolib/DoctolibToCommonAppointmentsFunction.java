@@ -2,7 +2,7 @@ package com.boxtal.doyenm.doctolib;
 
 import com.boxtal.doyenm.Appointment;
 import com.boxtal.doyenm.doctolib.dto.AppointmentDto;
-import com.boxtal.doyenm.doctolib.dto.Slot;
+import com.boxtal.doyenm.doctolib.dto.SlotDto;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public class DoctolibToCommonAppointmentsFunction implements Function<AppointmentDto, List<Appointment>> {
     @Override
     public List<Appointment> apply(AppointmentDto appointmentDto) {
-        List<Slot> slots = new ArrayList<>();
+        List<SlotDto> slots = new ArrayList<>();
         appointmentDto.getAvailabilities()
                 .stream()
                 .map(availability -> availability.getSlots())
