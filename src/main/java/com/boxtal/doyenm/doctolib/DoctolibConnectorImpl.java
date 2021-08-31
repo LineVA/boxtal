@@ -47,7 +47,7 @@ public class DoctolibConnectorImpl implements DoctolibConnector {
     }
 
     @Override
-    public List<Object> getAppointmentsByStructure(Structure structure) {
+    public AppointmentDto getAppointmentsByStructure(Structure structure) {
 
         try (CloseableHttpClient client = HttpClients.createDefault()) {
 
@@ -57,11 +57,11 @@ public class DoctolibConnectorImpl implements DoctolibConnector {
 
             AppointmentDto response = client.execute(request, httpResponse ->
                     mapper.readValue(httpResponse.getEntity().getContent(), AppointmentDto.class));
-            return null;
+            return response;
 
         } catch (IOException ex) {
             ex.printStackTrace();
+            return null;
         }
-        return null;
     }
 }
