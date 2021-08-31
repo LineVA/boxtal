@@ -1,5 +1,6 @@
 package com.boxtal.doyenm.doctolib.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -7,6 +8,7 @@ import lombok.Getter;
  * A medical structure as a place where you can receive a vaccine
  */
 @Getter
+@AllArgsConstructor
 @Builder
 public class StructureDto {
     /**
