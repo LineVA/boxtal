@@ -22,7 +22,7 @@ import java.util.List;
 public class DoctolibConnectorImpl implements DoctolibConnector {
 
     private final ObjectMapper mapper = new ObjectMapper();
-
+    private final CloseableHttpClient client = HttpClients.createDefault();
 
     @Override
     public List<StructureDto> getStructures(String zipCode) {
@@ -49,8 +49,7 @@ public class DoctolibConnectorImpl implements DoctolibConnector {
     @Override
     public AppointmentDto getAppointmentsByStructure(StructureDto structure) {
 
-        try (CloseableHttpClient client = HttpClients.createDefault()) {
-
+        try {
             HttpGet request = new HttpGet("https://www.doctolib.fr/search_results/"
                     + structure.getId()
                     + ".json?limit=7&ref_visit_motive_ids[]=6970,7005,8740,8739&speciality_id=5494&search_result_format=json");
@@ -61,8 +60,8 @@ public class DoctolibConnectorImpl implements DoctolibConnector {
             return response;
 
         } catch (IOException ex) {
-            ex.printStackTrace();
-            return null;
+           log.error("Exception when calling Doctolib for Structure {} : {}", structure.getId(), ex);
+            return new AppointmentDto();
         }
     }
 }
