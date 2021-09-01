@@ -19,16 +19,19 @@ public class DoctolibToCommonAppointmentsFunction implements Function<Appointmen
     @Override
     public List<Appointment> apply(AppointmentDto appointmentDto) {
         List<SlotDto> slots = new ArrayList<>();
-        appointmentDto.getAvailabilities()
-                .stream()
-                .map(availability -> availability.getSlots())
-                .forEach(i -> slots.addAll(i));
+        if (appointmentDto.getAvailabilities() != null) {
+            appointmentDto.getAvailabilities()
+                    .stream()
+                    .map(availability -> availability.getSlots())
+                    .forEach(i -> slots.addAll(i));
 
-        return slots.stream()
-                .map(slot -> Appointment.builder()
-                        .structure(appointmentDto.getStructure().getName())
-                        .schedule(LocalDateTime.parse(slot.getStartDate().substring(0, 23)))
-                        .build()
-                ).collect(Collectors.toList());
+            return slots.stream()
+                    .map(slot -> Appointment.builder()
+                            .structure(appointmentDto.getStructure().getName())
+                            .schedule(LocalDateTime.parse(slot.getStartDate().substring(0, 23)))
+                            .build()
+                    ).collect(Collectors.toList());
+        }
+        return new ArrayList<>();
     }
 }
