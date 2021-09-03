@@ -1,0 +1,114 @@
+{
+	"info": {
+		"_postman_id": "916ba227-e3db-405e-ad61-d8993831208f",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Appli",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/doyenm/appointments?zipCode=75020-paris",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"doyenm",
+						"appointments"
+					],
+					"query": [
+						{
+							"key": "zipCode",
+							"value": "75020-paris"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DL - get appointments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.doctolib.fr/search_results/2111019.json?limit=7&ref_visit_motive_ids[]=6970,7005,8740,8739&speciality_id=5494&search_result_format=json",
+					"protocol": "https",
+					"host": [
+						"www",
+						"doctolib",
+						"fr"
+					],
+					"path": [
+						"search_results",
+						"2111019.json"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "7"
+						},
+						{
+							"key": "ref_visit_motive_ids[]",
+							"value": "6970,7005,8740,8739"
+						},
+						{
+							"key": "speciality_id",
+							"value": "5494"
+						},
+						{
+							"key": "search_result_format",
+							"value": "json"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DL - get structures",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.doctolib.fr/vaccination-covid-19/75020-paris?ref_visit_motive_ids[]=6970&ref_visit_motive_ids[]=7005&ref_visit_motive_ids[]=8740&ref_visit_motive_ids[]=8739",
+					"protocol": "https",
+					"host": [
+						"www",
+						"doctolib",
+						"fr"
+					],
+					"path": [
+						"vaccination-covid-19",
+						"75020-paris"
+					],
+					"query": [
+						{
+							"key": "ref_visit_motive_ids[]",
+							"value": "6970"
+						},
+						{
+							"key": "ref_visit_motive_ids[]",
+							"value": "7005"
+						},
+						{
+							"key": "ref_visit_motive_ids[]",
+							"value": "8740"
+						},
+						{
+							"key": "ref_visit_motive_ids[]",
+							"value": "8739"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
