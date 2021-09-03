@@ -50,9 +50,9 @@ public class DoctolibConnectorImpl implements DoctolibConnector {
     public AppointmentDto getAppointmentsByStructure(StructureDto structure) {
 
         try {
-            HttpGet request = new HttpGet("https://www.doctolib.fr/search_results/"
-                    + structure.getId()
-                    + ".json?limit=7&ref_visit_motive_ids[]=6970,7005,8740,8739&speciality_id=5494&search_result_format=json");
+            HttpGet request = new HttpGet("https://www.doctolib.fr/search_results/" +
+                   structure.getId() +
+                    ".json?limit=5&ref_visit_motive_ids%5B%5D=6970&ref_visit_motive_ids%5B%5D=7005&ref_visit_motive_ids%5B%5D=8740&ref_visit_motive_ids%5B%5D=8739&speciality_id=5494&search_result_format=json");
 
             AppointmentDto response = client.execute(request, httpResponse ->
                     mapper.readValue(httpResponse.getEntity().getContent(), AppointmentDto.class));
